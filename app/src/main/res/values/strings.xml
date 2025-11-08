@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Harry Potter App</string>
+    
+    <!-- Dashboard -->
+    <string name="dashboard_title">Harry Potter Dashboard</string>
+    <string name="btn_character_by_id">Personagem por ID</string>
+    <string name="btn_hogwarts_staff">Professores de Hogwarts</string>
+    <string name="btn_students_by_house">Estudantes por Casa</string>
+    <string name="btn_exit">Sair</string>
+    
+    <!-- Character By ID -->
+    <string name="character_by_id_title">Buscar Personagem</string>
+    <string name="hint_character_id">Digite o ID do personagem</string>
+    <string name="btn_search">Buscar</string>
+    <string name="label_name">Nome:</string>
+    <string name="label_house">Casa:</string>
+    <string name="error_empty_id">Por favor, digite um ID</string>
+    
+    <!-- Hogwarts Staff -->
+    <string name="hogwarts_staff_title">Professores de Hogwarts</string>
+    <string name="btn_load_staff">Carregar Professores</string>
+    
+    <!-- Students By House -->
+    <string name="students_by_house_title">Estudantes por Casa</string>
+    <string name="label_select_house">Selecione uma casa:</string>
+    <string name="house_gryffindor">Gryffindor</string>
+    <string name="house_slytherin">Slytherin</string>
+    <string name="house_ravenclaw">Ravenclaw</string>
+    <string name="house_hufflepuff">Hufflepuff</string>
+    <string name="btn_load_students">Buscar Estudantes</string>
+    <string name="error_no_house_selected">Por favor, selecione uma casa</string>
+    
+    <!-- Common -->
+    <string name="loading">Carregando…</string>
+    <string name="error_generic">Ocorreu um erro. Tente novamente.</string>
+    <string name="no_data">Nenhum dado encontrado</string>
+</resources>
