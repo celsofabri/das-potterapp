@@ -8,6 +8,8 @@ import androidx.lifecycle.ViewModelProvider
 import br.com.das.potterapp.R
 import br.com.das.potterapp.databinding.ActivityCharacterByIdBinding
 import br.com.das.potterapp.util.Result
+import coil.load
+import coil.transform.CircleCropTransformation
 
 class CharacterByIdActivity : AppCompatActivity() {
     
@@ -72,6 +74,15 @@ class CharacterByIdActivity : AppCompatActivity() {
                 append("${getString(R.string.label_house)} ${character.house.ifEmpty { "Não informada" }}")
             }
             binding.tvResult.text = resultText
+            
+            // Load character image
+            binding.ivCharacter.load(character.image) {
+                crossfade(true)
+                placeholder(R.drawable.ic_person_placeholder)
+                error(R.drawable.ic_person_placeholder)
+                transformations(CircleCropTransformation())
+            }
+            
             binding.scrollView.visibility = View.VISIBLE
         } else {
             showError(getString(R.string.no_data))

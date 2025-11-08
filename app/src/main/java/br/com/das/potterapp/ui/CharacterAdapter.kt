@@ -3,8 +3,11 @@ package br.com.das.potterapp.ui
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import br.com.das.potterapp.R
 import br.com.das.potterapp.data.model.Character
 import br.com.das.potterapp.databinding.ItemCharacterBinding
+import coil.load
+import coil.transform.CircleCropTransformation
 
 class CharacterAdapter : RecyclerView.Adapter<CharacterAdapter.CharacterViewHolder>() {
     
@@ -40,6 +43,14 @@ class CharacterAdapter : RecyclerView.Adapter<CharacterAdapter.CharacterViewHold
                 character.house
             } else {
                 "Casa não informada"
+            }
+            
+            // Load character image with Coil
+            binding.ivCharacter.load(character.image) {
+                crossfade(true)
+                placeholder(R.drawable.ic_person_placeholder)
+                error(R.drawable.ic_person_placeholder)
+                transformations(CircleCropTransformation())
             }
         }
     }
