@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Primary Colors -->
+    <color name="primary">#740001</color>
+    <color name="primary_dark">#5C0001</color>
+    <color name="primary_light">#AE0001</color>
+    <color name="accent">#D3A625</color>
+    
+    <!-- House Colors -->
+    <color name="gryffindor">#740001</color>
+    <color name="slytherin">#1A472A</color>
+    <color name="hufflepuff">#ECB939</color>
+    <color name="ravenclaw">#0E1A40</color>
+    
+    <!-- Background Colors -->
+    <color name="background">#F5F5F5</color>
+    <color name="surface">#FFFFFF</color>
+    <color name="card_background">#FAFAFA</color>
+    
+    <!-- Text Colors -->
+    <color name="text_primary">#212121</color>
+    <color name="text_secondary">#757575</color>
+    <color name="text_on_primary">#FFFFFF</color>
+    
+    <!-- Common Colors -->
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="gray">#9E9E9E</color>
+    <color name="light_gray">#E0E0E0</color>
+    
+    <!-- Status Colors -->
+    <color name="error">#B00020</color>
+    <color name="success">#4CAF50</color>
+</resources>

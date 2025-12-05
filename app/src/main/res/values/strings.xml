@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Das Potter App</string>
+    
+    <!-- Main Activity -->
+    <string name="main_title">Harry Potter API</string>
+    <string name="main_subtitle">Escolha uma opção</string>
+    <string name="btn_find_character">Buscar Personagem por ID</string>
+    <string name="btn_list_staff">Listar Professores</string>
+    <string name="btn_list_students">Listar Estudantes por Casa</string>
+    <string name="btn_exit">Sair</string>
+    
+    <!-- Find Character Activity -->
+    <string name="find_character_title">Buscar Personagem</string>
+    <string name="hint_character_id">Digite o ID do personagem</string>
+    <string name="btn_search">Buscar</string>
+    <string name="btn_back">Voltar</string>
+    <string name="character_info">Informações do Personagem</string>
+    
+    <!-- Staff Activity -->
+    <string name="staff_title">Professores de Hogwarts</string>
+    <string name="staff_list">Lista de Professores</string>
+    
+    <!-- Students by House Activity -->
+    <string name="students_title">Estudantes por Casa</string>
+    <string name="select_house">Selecione uma casa:</string>
+    <string name="house_gryffindor">Grifinória</string>
+    <string name="house_slytherin">Sonserina</string>
+    <string name="house_hufflepuff">Lufa-Lufa</string>
+    <string name="house_ravenclaw">Corvinal</string>
+    <string name="btn_list">Listar Estudantes</string>
+    <string name="students_list">Lista de Estudantes</string>
+    
+    <!-- Common -->
+    <string name="loading">Carregando…</string>
+    <string name="error_network">Erro de conexão. Verifique sua internet.</string>
+    <string name="error_empty_id">Por favor, digite um ID válido</string>
+    <string name="error_no_house_selected">Por favor, selecione uma casa</string>
+    <string name="error_character_not_found">Personagem não encontrado</string>
+    <string name="no_data">Nenhum dado disponível</string>
+</resources>
