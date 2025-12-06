@@ -11,11 +11,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.mob2.daspotterapp.R
 import com.mob2.daspotterapp.network.HpApiService
+import com.mob2.daspotterapp.util.RetrofitFactory
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 
 class FindCharacterActivity : AppCompatActivity() {
     
@@ -37,13 +36,7 @@ class FindCharacterActivity : AppCompatActivity() {
         tvResult = findViewById(R.id.tvResult)
         progressBar = findViewById(R.id.progressBar)
         
-        // Initialize Retrofit
-        val retrofit = Retrofit.Builder()
-            .baseUrl("https://hp-api.onrender.com/api/")
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
-        
-        apiService = retrofit.create(HpApiService::class.java)
+        apiService = RetrofitFactory.getInstance().create(HpApiService::class.java)
         
         btnSearch.setOnClickListener {
             val characterId = etCharacterId.text.toString().trim()
