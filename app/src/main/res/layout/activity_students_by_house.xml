@@ -1,124 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:background="@color/background"
     tools:context=".view.StudentsByHouseActivity">
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/students_title"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:textColor="@color/primary"
+        android:padding="24dp" />
+
+    <TextView
+        android:id="@+id/tvSelectHouse"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/select_house"
+        android:textSize="18sp"
+        android:textColor="@color/text_primary"
+        android:paddingHorizontal="24dp"
+        android:paddingBottom="16dp" />
+
+    <RadioGroup
+        android:id="@+id/radioGroupHouses"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:padding="24dp">
+        android:paddingHorizontal="24dp"
+        android:paddingBottom="16dp">
 
-        <TextView
-            android:id="@+id/tvTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/students_title"
-            android:textSize="28sp"
-            android:textStyle="bold"
-            android:textColor="@color/primary"
-            android:layout_marginBottom="24dp" />
-
-        <TextView
-            android:id="@+id/tvSelectHouse"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/select_house"
-            android:textSize="18sp"
-            android:textColor="@color/text_primary"
-            android:layout_marginBottom="16dp" />
-
-        <RadioGroup
-            android:id="@+id/radioGroupHouses"
+        <RadioButton
+            android:id="@+id/rbGryffindor"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp">
-
-            <RadioButton
-                android:id="@+id/rbGryffindor"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/house_gryffindor"
-                android:textSize="16sp"
-                android:padding="12dp" />
-
-            <RadioButton
-                android:id="@+id/rbSlytherin"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/house_slytherin"
-                android:textSize="16sp"
-                android:padding="12dp" />
-
-            <RadioButton
-                android:id="@+id/rbHufflepuff"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/house_hufflepuff"
-                android:textSize="16sp"
-                android:padding="12dp" />
-
-            <RadioButton
-                android:id="@+id/rbRavenclaw"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/house_ravenclaw"
-                android:textSize="16sp"
-                android:padding="12dp" />
-
-        </RadioGroup>
-
-        <Button
-            android:id="@+id/btnListStudents"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/btn_list"
+            android:text="@string/house_gryffindor"
             android:textSize="16sp"
-            android:padding="16dp"
-            android:backgroundTint="@color/primary"
-            android:layout_marginBottom="24dp" />
+            android:padding="12dp" />
 
-        <ProgressBar
-            android:id="@+id/progressBar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:visibility="gone"
-            android:layout_marginBottom="16dp" />
-
-        <TextView
-            android:id="@+id/tvStudentsList"
+        <RadioButton
+            android:id="@+id/rbSlytherin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/students_list"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:textColor="@color/text_primary"
-            android:layout_marginBottom="16dp" />
-
-        <TextView
-            android:id="@+id/tvResult"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text=""
+            android:text="@string/house_slytherin"
             android:textSize="16sp"
-            android:textColor="@color/text_primary"
-            android:padding="16dp"
-            android:background="@color/surface"
-            android:minHeight="300dp"
-            android:layout_marginBottom="24dp" />
+            android:padding="12dp" />
 
-        <Button
-            android:id="@+id/btnBack"
+        <RadioButton
+            android:id="@+id/rbHufflepuff"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/btn_back"
+            android:text="@string/house_hufflepuff"
             android:textSize="16sp"
-            android:padding="16dp"
-            android:backgroundTint="@color/gray" />
+            android:padding="12dp" />
 
-    </LinearLayout>
-</ScrollView>
+        <RadioButton
+            android:id="@+id/rbRavenclaw"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/house_ravenclaw"
+            android:textSize="16sp"
+            android:padding="12dp" />
+
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/btnListStudents"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_list"
+        android:textSize="16sp"
+        android:padding="16dp"
+        android:layout_marginHorizontal="24dp"
+        android:layout_marginBottom="16dp"
+        android:backgroundTint="@color/primary" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:visibility="gone"
+        android:layout_margin="16dp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvStudents"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:paddingHorizontal="8dp"
+        android:clipToPadding="false" />
+
+    <Button
+        android:id="@+id/btnBack"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_back"
+        android:textSize="16sp"
+        android:padding="16dp"
+        android:layout_margin="16dp"
+        android:backgroundTint="@color/gray" />
+
+</LinearLayout>

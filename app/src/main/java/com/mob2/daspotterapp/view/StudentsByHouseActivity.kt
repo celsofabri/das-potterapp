@@ -6,11 +6,13 @@ import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.RadioButton
 import android.widget.RadioGroup
-import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.mob2.daspotterapp.R
+import com.mob2.daspotterapp.adapter.CharacterAdapter
 import com.mob2.daspotterapp.network.HpApiService
 import com.mob2.daspotterapp.util.RetrofitFactory
 import kotlinx.coroutines.Dispatchers
@@ -22,7 +24,7 @@ class StudentsByHouseActivity : AppCompatActivity() {
     private lateinit var radioGroupHouses: RadioGroup
     private lateinit var btnListStudents: Button
     private lateinit var btnBack: Button
-    private lateinit var tvResult: TextView
+    private lateinit var rvStudents: RecyclerView
     private lateinit var progressBar: ProgressBar
     private lateinit var apiService: HpApiService
 
@@ -34,8 +36,11 @@ class StudentsByHouseActivity : AppCompatActivity() {
         radioGroupHouses = findViewById(R.id.radioGroupHouses)
         btnListStudents = findViewById(R.id.btnListStudents)
         btnBack = findViewById(R.id.btnBack)
-        tvResult = findViewById(R.id.tvResult)
+        rvStudents = findViewById(R.id.rvStudents)
         progressBar = findViewById(R.id.progressBar)
+
+        // Setup RecyclerView
+        rvStudents.layoutManager = LinearLayoutManager(this)
 
         apiService = RetrofitFactory.getInstance().create(HpApiService::class.java)
 
@@ -67,7 +72,7 @@ class StudentsByHouseActivity : AppCompatActivity() {
 
     private fun fetchStudents(house: String) {
         progressBar.visibility = View.VISIBLE
-        tvResult.text = getString(R.string.loading)
+        rvStudents.visibility = View.GONE
 
         lifecycleScope.launch {
             try {
@@ -76,13 +81,17 @@ class StudentsByHouseActivity : AppCompatActivity() {
                 }
 
                 if (students.isNotEmpty()) {
-                    val studentNames = students.joinToString(separator = "\n") { "• ${it.name}" }
-                    tvResult.text = studentNames
+                    val adapter = CharacterAdapter(students)
+                    rvStudents.adapter = adapter
+                    rvStudents.visibility = View.VISIBLE
                 } else {
-                    tvResult.text = "Nenhum estudante encontrado para esta casa."
+                    Toast.makeText(
+                        this@StudentsByHouseActivity,
+                        getString(R.string.no_students_found),
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             } catch (e: Exception) {
-                tvResult.text = getString(R.string.error_network)
                 Toast.makeText(
                     this@StudentsByHouseActivity,
                     getString(R.string.error_network),
