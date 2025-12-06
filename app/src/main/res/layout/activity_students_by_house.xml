@@ -87,13 +87,23 @@
         android:visibility="gone"
         android:layout_margin="16dp" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvStudents"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:paddingHorizontal="8dp"
-        android:clipToPadding="false" />
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/tvStudentsList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textColor="@color/text_primary"
+            android:padding="24dp"
+            android:lineSpacingExtra="4dp"
+            android:visibility="gone"
+            tools:text="Estudante 1\nEstudante 2\nEstudante 3" />
+
+    </ScrollView>
 
     <Button
         android:id="@+id/btnBack"

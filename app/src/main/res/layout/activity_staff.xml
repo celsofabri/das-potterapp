@@ -25,13 +25,22 @@
         android:visibility="gone"
         android:layout_margin="16dp" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvStaff"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:paddingHorizontal="8dp"
-        android:clipToPadding="false" />
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/tvStaffList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:textColor="@color/text_primary"
+            android:padding="24dp"
+            android:lineSpacingExtra="4dp"
+            tools:text="Professor 1\nProfessor 2\nProfessor 3" />
+
+    </ScrollView>
 
     <Button
         android:id="@+id/btnBack"

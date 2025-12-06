@@ -4,13 +4,11 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.ProgressBar
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.mob2.daspotterapp.R
-import com.mob2.daspotterapp.adapter.CharacterAdapter
 import com.mob2.daspotterapp.network.HpApiService
 import com.mob2.daspotterapp.util.RetrofitFactory
 import kotlinx.coroutines.Dispatchers
@@ -19,7 +17,7 @@ import kotlinx.coroutines.withContext
 
 class StaffActivity : AppCompatActivity() {
 
-    private lateinit var rvStaff: RecyclerView
+    private lateinit var tvStaffList: TextView
     private lateinit var btnBack: Button
     private lateinit var progressBar: ProgressBar
     private lateinit var apiService: HpApiService
@@ -29,26 +27,23 @@ class StaffActivity : AppCompatActivity() {
         setContentView(R.layout.activity_staff)
 
         // Initialize views
-        rvStaff = findViewById(R.id.rvStaff)
+        tvStaffList = findViewById(R.id.tvStaffList)
         btnBack = findViewById(R.id.btnBack)
         progressBar = findViewById(R.id.progressBar)
 
-        // Setup RecyclerView
-        rvStaff.layoutManager = LinearLayoutManager(this)
-
         apiService = RetrofitFactory.getInstance().create(HpApiService::class.java)
+
+        // Fetch staff on activity creation
+        fetchStaff()
 
         btnBack.setOnClickListener {
             finish()
         }
-
-        // Load staff automatically
-        loadStaff()
     }
 
-    private fun loadStaff() {
+    private fun fetchStaff() {
         progressBar.visibility = View.VISIBLE
-        rvStaff.visibility = View.GONE
+        tvStaffList.visibility = View.GONE
 
         lifecycleScope.launch {
             try {
@@ -57,13 +52,14 @@ class StaffActivity : AppCompatActivity() {
                 }
 
                 if (staff.isNotEmpty()) {
-                    val adapter = CharacterAdapter(staff)
-                    rvStaff.adapter = adapter
-                    rvStaff.visibility = View.VISIBLE
+                    // Exibir apenas os nomes conforme especificação
+                    val staffNames = staff.joinToString("\n") { it.name }
+                    tvStaffList.text = staffNames
+                    tvStaffList.visibility = View.VISIBLE
                 } else {
                     Toast.makeText(
                         this@StaffActivity,
-                        getString(R.string.no_data),
+                        getString(R.string.no_staff_found),
                         Toast.LENGTH_SHORT
                     ).show()
                 }

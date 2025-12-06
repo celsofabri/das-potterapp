@@ -39,5 +39,6 @@
     <string name="error_character_not_found">Personagem não encontrado</string>
     <string name="no_data">Nenhum dado disponível</string>
     <string name="no_students_found">Nenhum estudante encontrado</string>
+    <string name="no_staff_found">Nenhum professor encontrado</string>
     <string name="character_image">Imagem do personagem</string>
 </resources>

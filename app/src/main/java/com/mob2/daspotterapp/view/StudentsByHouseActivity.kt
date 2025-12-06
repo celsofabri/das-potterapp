@@ -6,13 +6,11 @@ import android.widget.Button
 import android.widget.ProgressBar
 import android.widget.RadioButton
 import android.widget.RadioGroup
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.mob2.daspotterapp.R
-import com.mob2.daspotterapp.adapter.CharacterAdapter
 import com.mob2.daspotterapp.network.HpApiService
 import com.mob2.daspotterapp.util.RetrofitFactory
 import kotlinx.coroutines.Dispatchers
@@ -24,7 +22,7 @@ class StudentsByHouseActivity : AppCompatActivity() {
     private lateinit var radioGroupHouses: RadioGroup
     private lateinit var btnListStudents: Button
     private lateinit var btnBack: Button
-    private lateinit var rvStudents: RecyclerView
+    private lateinit var tvStudentsList: TextView
     private lateinit var progressBar: ProgressBar
     private lateinit var apiService: HpApiService
 
@@ -36,11 +34,8 @@ class StudentsByHouseActivity : AppCompatActivity() {
         radioGroupHouses = findViewById(R.id.radioGroupHouses)
         btnListStudents = findViewById(R.id.btnListStudents)
         btnBack = findViewById(R.id.btnBack)
-        rvStudents = findViewById(R.id.rvStudents)
+        tvStudentsList = findViewById(R.id.tvStudentsList)
         progressBar = findViewById(R.id.progressBar)
-
-        // Setup RecyclerView
-        rvStudents.layoutManager = LinearLayoutManager(this)
 
         apiService = RetrofitFactory.getInstance().create(HpApiService::class.java)
 
@@ -72,7 +67,7 @@ class StudentsByHouseActivity : AppCompatActivity() {
 
     private fun fetchStudents(house: String) {
         progressBar.visibility = View.VISIBLE
-        rvStudents.visibility = View.GONE
+        tvStudentsList.visibility = View.GONE
 
         lifecycleScope.launch {
             try {
@@ -81,9 +76,10 @@ class StudentsByHouseActivity : AppCompatActivity() {
                 }
 
                 if (students.isNotEmpty()) {
-                    val adapter = CharacterAdapter(students)
-                    rvStudents.adapter = adapter
-                    rvStudents.visibility = View.VISIBLE
+                    // Exibir apenas os nomes conforme especificação
+                    val studentNames = students.joinToString("\n") { it.name }
+                    tvStudentsList.text = studentNames
+                    tvStudentsList.visibility = View.VISIBLE
                 } else {
                     Toast.makeText(
                         this@StudentsByHouseActivity,
